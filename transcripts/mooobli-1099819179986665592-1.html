@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Transcript</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px 60px;
+        }
+
+        .transcript-container {
+            max-width: 700px;
+            margin-left: 0;
+        }
+
+        h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .server-logo {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+
+        .message {
+            background-color: #1e1e1e;
+            border: 1px solid #2c2c2c;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            display: flex;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .author {
+            font-weight: 600;
+            color: #81d4fa;
+            font-size: 1em;
+        }
+
+        .timestamp {
+            font-size: 0.8em;
+            color: #b0b0b0;
+            float: right;
+        }
+
+        .content {
+            margin-top: 8px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            color: #dcdcdc;
+        }
+
+        code {
+            background-color: #2d2d2d;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #ffcc80;
+        }
+
+        .embed {
+            background-color: #2c2c2c;
+            border-left: 4px solid #4fc3f7;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+
+        .embed-title {
+            font-weight: bold;
+            color: #4fc3f7;
+            margin-bottom: 5px;
+        }
+
+        .embed-description {
+            white-space: pre-wrap;
+            color: #ddd;
+        }
+
+        .image-attachment {
+            margin-top: 10px;
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <img src="data:image/png;base64,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" alt="Evergreen City Roleplay" class="server-logo">
+
+    <div class="transcript-container">
+        <h2>Ticket Transcript</h2>
+
+        <!-- BEGIN MESSAGE -->
+        <div class="message">
+            <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="avatar" class="avatar">
+            <div class="message-content">
+                <div>
+                    <span class="author">User123</span>
+                    <span class="timestamp">2025-10-11 13:42:00</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="content">
+                    Hello! This is a test message with some **markdown**.<br><br>
+                    Here's a code block:
+                    <pre><code>def hello():
+    print("Hello, world!")</code></pre>
+                </div>
+
+                <!-- Optional embed -->
+                <div class="embed">
+                    <div class="embed-title">Embed Title</div>
+                    <div class="embed-description">This is an embed description.</div>
+                </div>
+
+                <!-- Optional image -->
+                <img src="https://via.placeholder.com/300x150" class="image-attachment">
+            </div>
+        </div>
+        <!-- END MESSAGE -->
+
+        <!-- Repeat .message divs here for each message -->
+
+        <footer>
+            Evergreen Support!
+        </footer>
+    </div>
+</body>
+</html>
