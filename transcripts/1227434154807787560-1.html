@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Evergreen City Roleplay Transcript - #claimed-general-support-itzclarzz</title>
+<style>
+/* Full CSS based on DiscordChatExporter styling for high fidelity.
+    This includes rules for fixed width, embeds, reactions, and markdown.
+*/
+body {
+    background-color: #36393f;
+    color: #dcddde;
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.375;
+}
+
+a {
+    color: #00aff4;
+    text-decoration: none;
+}
+
+/* --- Main Layout Container --- */
+.chatlog__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #36393f;
+}
+
+/* --- Header --- */
+.chatlog__header {
+    padding: 20px 16px;
+    border-bottom: 1px solid #2f3136;
+    display: flex;
+    align-items: center;
+}
+
+.chatlog__header-avatar {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.chatlog__header-meta {
+    margin-left: 16px;
+}
+
+.chatlog__header-name {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.chatlog__header-channel {
+    color: #72767d;
+    font-size: 1em;
+}
+
+/* --- Message Log --- */
+.chatlog {
+    display: flex;
+    flex-direction: column;
+}
+
+.chatlog__message {
+    display: flex;
+    padding: 8px 16px;
+    border-top: 1px solid #2f3136;
+    position: relative;
+}
+
+.chatlog__message:hover {
+    background-color: #32353b;
+}
+
+/* --- System Messages --- */
+.chatlog__system-message {
+    padding: 8px 16px;
+    border-top: 1px solid #2f3136;
+    text-align: center;
+    font-size: 0.875em;
+    color: #b9bbbe;
+}
+
+.chatlog__system-message-content {
+    display: inline-block;
+    padding: 2px 0;
+}
+
+.chatlog__system-message-divider {
+    display: block;
+    height: 1px;
+    background-color: #2f3136;
+    margin: 8px 0;
+}
+
+/* --- Reply Chains --- */
+.chatlog__reply {
+    font-size: 0.75em;
+    margin-bottom: 4px;
+}
+
+.chatlog__reply-text {
+    color: #72767d;
+    cursor: pointer;
+}
+
+.chatlog__reply-arrow {
+    margin-right: 4px;
+    display: inline-block;
+    transform: rotate(180deg);
+}
+
+/* --- Avatar and Message Info --- */
+.chatlog__avatar-container {
+    margin-right: 12px;
+}
+
+.chatlog__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.chatlog__message-group {
+    flex: 1;
+}
+
+.chatlog__author-name {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 1.375;
+}
+
+.chatlog__timestamp {
+    color: #72767d;
+    font-size: 0.75em;
+    margin-left: 8px;
+}
+
+.chatlog__content {
+    white-space: pre-wrap;
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+/* --- Markdown and Pre-formatted Text --- */
+.inline-code {
+    background: #2f3136;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.875em;
+}
+
+.pre {
+    background: #2f3136;
+    padding: 8px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-top: 6px;
+}
+
+.pre--codeblock {
+    font-family: monospace;
+}
+
+.pre--blockquote {
+    border-left: 3px solid #72767d;
+    margin-left: 0;
+    padding-left: 8px;
+    color: #b9bbbe;
+}
+
+.spoiler {
+    background-color: #202225;
+    color: #202225;
+    padding: 0 4px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.spoiler:hover {
+    color: #dcddde;
+}
+
+/* --- Mentions --- */
+.mention {
+    padding: 0 2px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.mention--user {
+    background-color: rgba(0, 175, 244, 0.1);
+    color: #00aff4;
+}
+
+.mention--role {
+    background-color: rgba(244, 127, 255, 0.1);
+}
+
+.mention--channel {
+    background-color: rgba(0, 176, 244, 0.1);
+    color: #00b0f4;
+}
+
+/* --- Attachments and Media --- */
+.chatlog__attachment-container {
+    margin-top: 8px;
+}
+
+.chatlog__attachment-media {
+    max-width: 450px;
+    max-height: 300px;
+    border-radius: 4px;
+}
+
+.chatlog__attachment-link {
+    display: inline-block;
+    color: #00aff4;
+}
+
+/* --- Stickers --- */
+.chatlog__sticker-container {
+    margin-top: 8px;
+}
+
+.chatlog__sticker {
+    max-width: 160px;
+    max-height: 160px;
+}
+
+/* --- Embeds --- */
+.chatlog__embed {
+    display: flex;
+    margin-top: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 430px;
+    border: 1px solid #2f3136;
+}
+
+.chatlog__embed-color-pill {
+    width: 4px;
+}
+
+.chatlog__embed-content {
+    background: #2f3136;
+    padding: 8px 12px;
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    font-size: 0.875em;
+    margin-bottom: 4px;
+}
+
+.chatlog__embed-title {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.chatlog__embed-title-link {
+    color: #fff;
+}
+
+.chatlog__embed-description {
+    color: #dcddde;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    margin-top: 8px;
+    flex: 1;
+    min-width: 100%;
+}
+
+.chatlog__embed-field--inline {
+    min-width: calc(50% - 12px);
+    margin-right: 12px;
+}
+
+.chatlog__embed-field-name {
+    font-weight: 600;
+    color: #fff;
+}
+
+.chatlog__embed-field-value {
+    font-size: 0.875em;
+}
+
+.chatlog__embed-image-container,
+.chatlog__embed-thumbnail-container {
+    margin-top: 8px;
+}
+
+.chatlog__embed-image,
+.chatlog__embed-thumbnail {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.chatlog__embed-footer {
+    font-size: 0.75em;
+    color: #72767d;
+    margin-top: 8px;
+}
+
+/* --- Reactions --- */
+.chatlog__reactions {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.chatlog__reaction {
+    background-color: #2f3136;
+    padding: 4px 6px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #292b2f;
+    cursor: default;
+}
+
+.chatlog__reaction-emoji {
+    font-size: 1.1em;
+    margin-right: 4px;
+}
+
+.chatlog__reaction-count {
+    color: #b9bbbe;
+    font-size: 0.875em;
+}
+
+/* --- Footer --- */
+.chatlog__footer {
+    text-align: center;
+    color: #72767d;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+<div class="chatlog__container">
+<div class="chatlog__header">
+<img class="chatlog__header-avatar" src="https://media.discordapp.net/attachments/1319477624283594854/1425641252271030333/Evergreen_Logo.png?format=webp&quality=lossless&width=896&height=896">
+<div class="chatlog__header-meta">
+<div class="chatlog__header-name">Evergreen City Roleplay</div>
+<div class="chatlog__header-channel">#claimed-general-support-itzclarzz</div>
+</div>
+</div>
+<div class="chatlog">
+
+<div class="chatlog__message">
+<div class="chatlog__avatar-container">
+<img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1262967476249956373/e3be398dfe414323d4f856faef44a774.png?size=1024">
+</div>
+<div class="chatlog__message-group">
+
+<span class="chatlog__author-name">Evergreen Management</span>
+<span class="chatlog__timestamp">05/Nov/2025 09:09:10 PM</span>
+<div class="chatlog__content">&lt;@&amp;1289343957079429262&gt; || &lt;@1227434154807787560&gt;</div>
+<div class="chatlog__embed"><div class="chatlog__embed-color-pill" style="background-color:#2ecc71"></div><div class="chatlog__embed-content"><div class="chatlog__embed-content-inner"><div class="chatlog__embed-author"><span class="chatlog__embed-author-name">Ticket Opened</span></div><div class="chatlog__embed-description">Welcome to <code class="inline-code">Evergreen City Roleplay Support!</code>
+&lt;@1227434154807787560&gt; has opened a <code class="inline-code">General Support</code> ticket for the following reason:
+``<code class="inline-code">Partnership.&lt;div class=&quot;pre pre--codeblock&quot;&gt;&lt;code&gt;Have you read our support panel before opening?&lt;/code&gt;&lt;/div&gt;Yes</code>`<code class="inline-code">
+&amp;gt; Do not ping any staff member!
+&amp;gt; <strong>Please note:</strong> </code>Our support team is not someone to argue with! Please cooperate with them and be civil.`</div></div><div class="chatlog__embed-footer"><span class="chatlog__embed-footer-text">Evergreen City Roleplay</span></div></div></div></div></div>
+<div class="chatlog__message">
+<div class="chatlog__avatar-container">
+<img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/962537652870070292/cd074496771c4605f50479b392108502.png?size=1024">
+</div>
+<div class="chatlog__message-group">
+
+<span class="chatlog__author-name">𝐹 | robbingabank100</span>
+<span class="chatlog__timestamp">05/Nov/2025 11:35:35 PM</span>
+<div class="chatlog__content">Hello! Please let me know if you meet these requirements.</div>
+</div></div>
+<div class="chatlog__message">
+<div class="chatlog__avatar-container">
+<img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1262967476249956373/e3be398dfe414323d4f856faef44a774.png?size=1024">
+</div>
+<div class="chatlog__message-group">
+
+<span class="chatlog__author-name">Evergreen Management</span>
+<span class="chatlog__timestamp">05/Nov/2025 11:35:39 PM</span>
+<div class="chatlog__content"></div>
+<div class="chatlog__embed"><div class="chatlog__embed-color-pill" style="background-color:#d9f5cb"></div><div class="chatlog__embed-content"><div class="chatlog__embed-content-inner"><div class="chatlog__embed-title"><a class="chatlog__embed-title-link" href="#">Partnership Requirements</a></div><div class="chatlog__embed-description">Here are the requirements to partner with us:
+-# These may change at any time.</div></div><div class="chatlog__embed-fields"><div class="chatlog__embed-field chatlog__embed-field--inline"><div class="chatlog__embed-field-name">Member Count</div><div class="chatlog__embed-field-value">75 Members (Excluding Bots)</div></div><div class="chatlog__embed-field chatlog__embed-field--inline"><div class="chatlog__embed-field-name">Active Community</div><div class="chatlog__embed-field-value">Your server <strong>must</strong> be active.</div></div><div class="chatlog__embed-field chatlog__embed-field--inline"><div class="chatlog__embed-field-name">ER:LC Related</div><div class="chatlog__embed-field-value">Your server must be ER:LC themed or support ER:LC. (Roleplay, Design, etc.)</div></div><div class="chatlog__embed-field "><div class="chatlog__embed-field-name">Representative</div><div class="chatlog__embed-field-value">A staff member from your server must remain in our server for the duration of the partnership. Your ad will be <strong>automatically</strong> removed if the chosen representative leaves.</div></div></div><div class="chatlog__embed-footer"><span class="chatlog__embed-footer-text">Evergreen City Roleplay</span></div></div></div></div></div>
+<div class="chatlog__message">
+<div class="chatlog__avatar-container">
+<img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1262967476249956373/e3be398dfe414323d4f856faef44a774.png?size=1024">
+</div>
+<div class="chatlog__message-group">
+
+<span class="chatlog__author-name">Evergreen Management</span>
+<span class="chatlog__timestamp">06/Nov/2025 11:35:49 PM</span>
+<div class="chatlog__content">&lt;@1227434154807787560&gt;</div>
+<div class="chatlog__embed"><div class="chatlog__embed-color-pill" style="background-color:#2ecc71"></div><div class="chatlog__embed-content"><div class="chatlog__embed-content-inner"><div class="chatlog__embed-title"><a class="chatlog__embed-title-link" href="#">Ticket Update Requested</a></div><div class="chatlog__embed-description">&lt;@1227434154807787560&gt;, 4y6f has requested an update on your ticket. If you don&#x27;t respond within 12 hours, it will be closed.</div></div></div></div></div></div>
+<div class="chatlog__system-message">
+    <div class="chatlog__system-message-content">
+        <span class="chatlog__system-message-icon"></span>
+        Ticket claimed by @𝐹 | robbingabank100.
+    </div>
+    <span class="chatlog__system-message-divider"></span>
+</div>
+
+</div>
+<div class="chatlog__footer">Evergreen City Transcripts</div>
+</div>
+</body>
+</html>
